@@ -36,18 +36,37 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  sonarcloud:
-    runs-on: ubuntu-latest
+  Trivy:
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
-      with:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+  #sonarcloud:
+    #runs-on: ubuntu-latest
+    #steps:
+    #- uses: actions/checkout@v3
+      #with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #fetch-depth: 0
+    #- name: SonarCloud Scan
+     # uses: sonarsource/sonarcloud-github-action@master
+      #env:
+       # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   docker:
     runs-on: ubuntu-latest
     steps:
