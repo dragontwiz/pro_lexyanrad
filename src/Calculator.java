@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class Calc extends JFrame {
-
+    
     private JTextField display;
     private String currentInput = "";
     private double result = 0;
@@ -47,7 +47,7 @@ public class Calc extends JFrame {
         add(buttonPanel, BorderLayout.CENTER);
 
         pack();
-        setLocationRelativeTo(null); // Center the frame on the screen
+        setLocationRelativeTo(null);
     }
 
     private class ButtonClickListener implements ActionListener {
@@ -57,7 +57,7 @@ public class Calc extends JFrame {
 
             if (buttonText.equals("=")) {
                 performOperation();
-            } else if (buttonText.equals("←")) { // Unicode for left arrow
+            } else if (buttonText.equals("←")) {
                 handleBackspace();
             } else if (buttonText.equals("C")) {
                 clearCalculator();
