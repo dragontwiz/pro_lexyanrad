@@ -35,7 +35,7 @@ public class Calc extends JFrame {
                 char keyChar = e.getKeyChar();
                 if (Character.isDigit(keyChar) || keyChar == '.' || "+-*/".indexOf(keyChar) != -1) {
                     handleInput(String.valueOf(keyChar));
-                } else if (e.getKeyChar() == '\n') { // Enter key for "=" operation
+                } else if (e.getKeyChar() == '\n') {
                     performOperation();
                 }
             }
@@ -60,7 +60,7 @@ public class Calc extends JFrame {
         add(buttonPanel, BorderLayout.CENTER);
 
         pack();
-        setLocationRelativeTo(null); // Center the frame on the screen
+        setLocationRelativeTo(null);
     }
 
     private class ButtonClickListener implements ActionListener {
@@ -72,7 +72,7 @@ public class Calc extends JFrame {
                 performOperation();
             } else if (buttonText.equals("C")) {
                 clearCalculator();
-            } else if (buttonText.equals("←")) { // Unicode for left arrow
+            } else if (buttonText.equals("←")) {
                 handleBackspace();
             } else {
                 handleInput(buttonText);
