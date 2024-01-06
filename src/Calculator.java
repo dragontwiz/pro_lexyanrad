@@ -29,13 +29,13 @@ public class Calc extends JFrame {
         });
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(4, 4));
+        buttonPanel.setLayout(new GridLayout(4, 5));
 
         String[] buttonLabels = {
-                "7", "8", "9", "/",
-                "4", "5", "6", "*",
-                "1", "2", "3", "-",
-                "0", ".", "=", "+"
+                "7", "8", "9", "/", "C",
+                "4", "5", "6", "*", "",
+                "1", "2", "3", "-", "",
+                "0", ".", "=", "+", ""
         };
 
         for (String label : buttonLabels) {
@@ -59,6 +59,8 @@ public class Calc extends JFrame {
                 performOperation();
             } else if (buttonText.equals("←")) { // Unicode for left arrow
                 handleBackspace();
+            } else if (buttonText.equals("C")) {
+                clearCalculator();
             } else {
                 handleInput(buttonText);
             }
@@ -113,6 +115,13 @@ public class Calc extends JFrame {
             currentInput = currentInput.substring(0, currentInput.length() - 1);
             display.setText(currentInput);
         }
+    }
+
+    private void clearCalculator() {
+        currentInput = "";
+        result = 0;
+        lastOperation = "";
+        display.setText("");
     }
 
     public static void main(String[] args) {
