@@ -66,4 +66,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}
+          tags: ${{ secrets.DOCKERHUB_REPO }},ghcr.io/${{ github.actor }}/micronaut-app:1.0-${GIT_COMMIT::8}
