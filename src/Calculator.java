@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Calc extends JFrame {
-    
+
     private JTextField display;
     private String currentInput = "";
     private double result = 0;
@@ -28,6 +29,18 @@ public class Calc extends JFrame {
             }
         });
 
+        display.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char keyChar = e.getKeyChar();
+                if (Character.isDigit(keyChar) || keyChar == '.' || "+-*/".indexOf(keyChar) != -1) {
+                    handleInput(String.valueOf(keyChar));
+                } else if (e.getKeyChar() == '\n') { // Enter key for "=" operation
+                    performOperation();
+                }
+            }
+        });
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 5));
 
@@ -47,7 +60,7 @@ public class Calc extends JFrame {
         add(buttonPanel, BorderLayout.CENTER);
 
         pack();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // Center the frame on the screen
     }
 
     private class ButtonClickListener implements ActionListener {
@@ -57,58 +70,58 @@ public class Calc extends JFrame {
 
             if (buttonText.equals("=")) {
                 performOperation();
-            } else if (buttonText.equals("←")) {
-                handleBackspace();
             } else if (buttonText.equals("C")) {
                 clearCalculator();
+            } else if (buttonText.equals("←")) { // Unicode for left arrow
+                handleBackspace();
             } else {
                 handleInput(buttonText);
             }
         }
     }
 
-    private void handleInput(String input) {
-        if (input.matches("[0-9.]")) {
-            currentInput += input;
-            display.setText(currentInput);
-        } else if (input.matches("[+\\-*/]")) {
-            performOperation();
-            lastOperation = input;
-            currentInput = "";
-        }
-    }
-
-    private void performOperation() {
-        if (!currentInput.isEmpty()) {
-            double currentValue = Double.parseDouble(currentInput);
-            switch (lastOperation) {
-                case "+":
-                    result += currentValue;
-                    break;
-                case "-":
-                    result -= currentValue;
-                    break;
-                case "*":
-                    result *= currentValue;
-                    break;
-                case "/":
-                    if (currentValue != 0) {
-                        result /= currentValue;
-                    } else {
-                        display.setText("Error");
-                        return;
-                    }
-                    break;
-                default:
-                    result = currentValue;
-                    break;
+        private void handleInput(String input) {
+            if (input.matches("[0-9.]")) {
+                currentInput += input;
+                display.setText(currentInput);
+            } else if (input.matches("[+\\-*/]")) {
+                performOperation();
+                lastOperation = input;
+                currentInput = "";
             }
-
-            display.setText(String.valueOf(result));
-            currentInput = "";
-            lastOperation = "";
         }
-    }
+
+        private void performOperation() {
+            if (!currentInput.isEmpty()) {
+                double currentValue = Double.parseDouble(currentInput);
+                switch (lastOperation) {
+                    case "+":
+                        result += currentValue;
+                        break;
+                    case "-":
+                        result -= currentValue;
+                        break;
+                    case "*":
+                        result *= currentValue;
+                        break;
+                    case "/":
+                        if (currentValue != 0) {
+                            result /= currentValue;
+                        } else {
+                            display.setText("Error");
+                            return;
+                        }
+                        break;
+                    default:
+                        result = currentValue;
+                        break;
+                }
+
+                display.setText(String.valueOf(result));
+                currentInput = "";
+                lastOperation = "";
+            }
+        }
 
     private void handleBackspace() {
         if (!currentInput.isEmpty()) {
@@ -117,14 +130,17 @@ public class Calc extends JFrame {
         }
     }
 
-    private void clearCalculator() {
-        currentInput = "";
-        result = 0;
-        lastOperation = "";
-        display.setText("");
-    }
+        private void clearCalculator() {
+            currentInput = "";
+            result = 0;
+            lastOperation = "";
+            display.setText("");
+        }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Calc().setVisible(true));
+        public static void main(String[] args) {
+            SwingUtilities.invokeLater(() -> {
+                Calc calculator = new Calc();
+                calculator.setVisible(true);
+            });
+        }
     }
-}
