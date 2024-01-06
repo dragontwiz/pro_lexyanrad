@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class Calc extends JFrame {
 
@@ -19,14 +20,22 @@ public class Calc extends JFrame {
         display.setEditable(false);
         add(display, BorderLayout.NORTH);
 
+        display.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0), "backspace");
+        display.getActionMap().put("backspace", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleBackspace();
+            }
+        });
+
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(4, 4));
+        buttonPanel.setLayout(new GridLayout(4, 5));
 
         String[] buttonLabels = {
-                "7", "8", "9", "/",
-                "4", "5", "6", "*",
-                "1", "2", "3", "-",
-                "0", ".", "=", "+"
+                "7", "8", "9", "/", "C",
+                "4", "5", "6", "*", "",
+                "1", "2", "3", "-", "",
+                "0", ".", "=", "+", ""
         };
 
         for (String label : buttonLabels) {
@@ -48,6 +57,8 @@ public class Calc extends JFrame {
 
             if (buttonText.equals("=")) {
                 performOperation();
+            } else if (buttonText.equals("C")) {
+                clearCalculator();
             } else {
                 handleInput(buttonText);
             }
@@ -95,6 +106,13 @@ public class Calc extends JFrame {
             currentInput = "";
             lastOperation = "";
         }
+    }
+
+    private void clearCalculator() {
+        currentInput = "";
+        result = 0;
+        lastOperation = "";
+        display.setText("");
     }
 
     public static void main(String[] args) {
