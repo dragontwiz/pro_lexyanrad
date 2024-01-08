@@ -61,6 +61,43 @@ public class UnitTests {
     }
 
     @Test
+    public void testSquareRoot() {
+        calculator.handleInput("9");
+        calculator.handleSquareRoot();
+        assertEquals("3.0", calculator.display.getText());
+    }
+
+    @Test
+    public void testSquareRootOfNegativeNumber() {
+        calculator.currentInput = "-4";
+        calculator.handleSquareRoot();
+        assertEquals("Error", calculator.display.getText());
+    }
+
+    @Test
+    public void testPowerOf2() {
+        calculator.handleInput("4");
+        calculator.handlePowerOf2();
+        assertEquals("16.0", calculator.display.getText());
+    }
+
+    @Test
+    public void testPowerOf2WithZero() {
+        calculator.handleInput("0");
+        calculator.handlePowerOf2();
+        assertEquals("0.0", calculator.display.getText());
+    }
+
+    @Test
+    public void testPowerOf2WithNegativeNumber() {
+        calculator.handleInput("-");
+        calculator.handleInput("3");
+        calculator.handleInput("=");
+        calculator.handlePowerOf2();
+        assertEquals("9.0", calculator.display.getText());
+    }
+
+    @Test
     public void testBackspace() {
         calculator.handleInput("1");
         calculator.handleInput("2");
