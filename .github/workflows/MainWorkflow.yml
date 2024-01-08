@@ -218,8 +218,8 @@ jobs:
            with:
               action: deploy
               manifests: |
-                 deployment.yml
-                 service.yml
+                 manifests/deployment.yml
+                 manifests/service.yml
               images: |
                  lexyanpro.azurecr.io/k8sdemo:${{ github.sha }}
               imagepullsecrets: |
