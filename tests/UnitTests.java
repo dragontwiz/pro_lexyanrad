@@ -1,5 +1,3 @@
-package unitTests;
-
 import calculator.Calculator;
 import org.junit.Before;
 import org.junit.Test;
