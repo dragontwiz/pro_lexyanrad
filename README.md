@@ -48,7 +48,7 @@ This branching strategy ensures a structured and controlled development process.
 ## About the CI/CD
 
 ## About the Security
-  The Scurity of the project acts on two different ocasions. The first one ocurs when pushing or merging into the developer or other sub branches. The second is when pushing or merging from other branches into the main branch. That way, no error or security invulnerability can be pushed or merged in the sub branches. The second security check is for security invulnerabilities when merging two branches.
+ The security of the project acts on two different occasions. The first one occurs when pushing or merging into the developer or other sub-branches. The second is when pushing or merging from other branches into the main branch. That way, no errors or security vulnerabilities can be pushed or merged into the sub-branches. The second security check is for security vulnerabilities when merging two branches.
 
 ## About the Docker deploy
 
