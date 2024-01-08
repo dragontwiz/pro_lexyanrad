@@ -169,5 +169,5 @@ jobs:
           push: true
           tags: |
                 ${{ secrets.DOCKERHUB_REPO }}
-                ghcr.io/dragontwiz/micronaut-app:latest
-                ghcr.io/dragontwiz/micronaut-app:1.0-${GIT_COMMIT::8}
+                ghcr.io/dragontwiz/package:latest
+                ghcr.io/dragontwiz/pacakge:${{ github.sha }}
