@@ -167,7 +167,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: |
-                ${{ secrets.DOCKERHUB_REPO }}
-                ghcr.io/dragontwiz/package:latest
-                ghcr.io/dragontwiz/pacakge:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_REPO }}
