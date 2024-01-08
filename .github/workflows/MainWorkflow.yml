@@ -198,7 +198,7 @@ jobs:
               docker build . -t lexyanpro.azurecr.io/k8sdemo:${{ github.sha }}
               docker push lexyanpro.azurecr.io/k8sdemo:${{ github.sha }}
 
-         - uses: azure/setup-kubectl@v2.0
+         - uses: azure/setup-kubectl@v3.0
 
          - uses: Azure/k8s-set-context@v2
            with:
