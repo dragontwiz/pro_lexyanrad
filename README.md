@@ -1,4 +1,5 @@
 # Проект по Съвременни Devops Практики
+![image](https://github.com/dragontwiz/pro_lexyan/assets/92438692/27a9ad87-ba14-4e33-b16b-6b37a6cf04aa)
 ### Current Version is Epsilon 0.5 
 # Overview
 The Calculator project is a simple Java Swing-based calculator application. It provides basic arithmetic operations, including addition, subtraction, multiplication, and division, along with additional features such as square root and power of 2.
