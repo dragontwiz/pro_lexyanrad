@@ -218,9 +218,9 @@ jobs:
            with:
               action: deploy
               manifests: |
-                 manifests/deployment.yml
-                 manifests/service.yml
+                 deployment.yml
+                 service.yml
               images: |
-                 demo.azurecr.io/k8sdemo:${{ github.sha }}
+                 lexyanpro.azurecr.io/k8sdemo:${{ github.sha }}
               imagepullsecrets: |
                  demo-k8s-secret
