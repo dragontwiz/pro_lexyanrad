@@ -77,18 +77,41 @@ This branching strategy ensures a structured and controlled development process.
  The security of the project acts on two different occasions. The first one occurs when pushing or merging into the developer or other sub-branches. The second is when pushing or merging from other branches into the main branch. That way, no errors or security vulnerabilities can be pushed or merged into the sub-branches. The second security check is for security vulnerabilities when merging two branches.
 
 ## About the Docker deploy
-
+ We build the Docker image which contains the app code and directly upload it to a DockerHub registry which contains all stable versions of the calculator app.
+ 
 ## About the Kubernetes cluster
+ The deploy to Kubernetes is done to a Azure Kubernetes Service which holds the pods in its cluster. The then pods can be downloaded from the cluster 
+ 
 # Version Alpha 0.1
+
+- Added the simple first itteration of the Dockerfile
+- Added the barebones calculator app
 
 # Version Beta 0.2
 
+- Integrated a Linter and Trivy to the workflow of the repository
+- Failed attempt at integrating Snyk and SonarCloud
+  
 # Version Gamma 0.3
 
+- Implemented the Docker job into the workflow
+- Started the Develop branch and the feature branches
+  
 # Version Delta 0.4
 
+- Delved into Kubernetes, Unit Testing, Different Security Strategies, but with no effect
+- Planned out the different workflows
+- Added new features to the app via feature branches
+  
 # Version Epsilon 0.5
 
+- Implemented the Kubernetes job
+- Fixed the repository structure
+- Implemented the 3 workflows
+- Completed the main workflow with a successful run
+   
 # TO DO
+
 - Figure out a way that everything works, without building so many different docker images.
-- To host online on a site packages for online downloading.
+- To host packages online on a site for easy access to the app.
+- Add more security technologies and fix the SonarCloud and Snyk integrations
