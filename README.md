@@ -1,5 +1,5 @@
 # Проект по Съвременни Devops Практики
-### Current Version is 0.5 Sigma
+### Current Version is Epsilon 0.5 
 # Overview
 The Calculator project is a simple Java Swing-based calculator application. It provides basic arithmetic operations, including addition, subtraction, multiplication, and division, along with additional features such as square root and power of 2.
 ## About the Branching
@@ -19,6 +19,6 @@ The Calculator project is a simple Java Swing-based calculator application. It p
 
 # Version Delta 0.4
 
-# Version Sigma 0.5
+# Version Epsilon 0.5
 
 # TO DO
