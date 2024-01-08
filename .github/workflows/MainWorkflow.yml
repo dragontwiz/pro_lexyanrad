@@ -58,32 +58,32 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
-  SAST:
-    runs-on: ubuntu-latest
-    needs: Linter
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # SAST:
+  #   runs-on: ubuntu-latest
+  #   needs: Linter
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - name: Install CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: all
+  #     - name: Install CodeQL
+  #       uses: github/codeql-action/init@v1
+  #       with:
+  #         languages: all
 
-      - name: Build CodeQL database
-        uses: github/codeql-action/analyze@v1
-        with:
-          queries: .
+  #     - name: Build CodeQL database
+  #       uses: github/codeql-action/analyze@v1
+  #       with:
+  #         queries: .
 
-#  Git-Secrets:
-  #  runs-on: ubuntu-latest
- #   needs: Linter
-#    steps:
- #     - name: Checkout code
-  #      uses: actions/checkout@v2
-#
- #     - name: Scan for Git Secrets
-#        uses: git-secrets/scan@master
+ Git-Secrets:
+   runs-on: ubuntu-latest
+   needs: Linter
+   steps:
+     - name: Checkout code
+       uses: actions/checkout@v2
+
+     - name: Scan for Git Secrets
+       uses: git-secrets/scan@master
 
 
 #  Secrets-Management:
