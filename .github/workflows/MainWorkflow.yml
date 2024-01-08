@@ -167,4 +167,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}
+          tags: |
+                ${{ secrets.DOCKERHUB_REPO }}
+                ghcr.io/dragontwiz/micronaut-app:latest
+                ghcr.io/dragontwiz/micronaut-app:1.0-${GIT_COMMIT::8}
