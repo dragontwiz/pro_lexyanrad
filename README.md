@@ -47,6 +47,31 @@ This branching strategy ensures a structured and controlled development process.
 - Hotfix branches are merged into both the main and develop branches.
 
 ## About the CI/CD
+### Linter Job:
+
+- Runs Super-Linter to perform linting on the codebase.
+- Echoes a simple message and additional instructions.
+### Trivy Job:
+
+- Depends on the Linter job.
+- Checks out the code.
+- Builds a Docker image.
+- Runs Trivy vulnerability scanner on the Docker image.
+### Docker Job:
+
+- Depends on the Trivy job.
+- Sets up QEMU and Docker Buildx.
+- Logs in to Docker Hub.
+- Builds and pushes the Docker image.
+### Kubernetes-Azure Job:
+
+- Depends on the Trivy job.
+- Checks out the code.
+- Logs in to Azure Container Registry.
+- Builds and pushes the Docker image.
+- Sets up Kubectl and configures the Kubernetes context.
+- Creates a secret for Kubernetes deployment.
+- Deploys to Kubernetes using manifests.
 
 ## About the Security
  The security of the project acts on two different occasions. The first one occurs when pushing or merging into the developer or other sub-branches. The second is when pushing or merging from other branches into the main branch. That way, no errors or security vulnerabilities can be pushed or merged into the sub-branches. The second security check is for security vulnerabilities when merging two branches.
