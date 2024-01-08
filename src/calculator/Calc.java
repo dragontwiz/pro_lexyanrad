@@ -128,7 +128,7 @@ public class Calc extends JFrame {
                 }
 
                 display.setText(String.valueOf(result));
-                currentInput = "";
+                currentInput = String.valueOf(result);
                 lastOperation = "";
             }
         }
@@ -153,7 +153,7 @@ public class Calc extends JFrame {
             if (currentValue >= 0) {
                 result = Math.sqrt(currentValue);
                 display.setText(String.valueOf(result));
-                currentInput = "";
+                currentInput = String.valueOf(result);
                 lastOperation = "";
             } else {
                 display.setText("Error");
@@ -166,7 +166,7 @@ public class Calc extends JFrame {
             double currentValue = Double.parseDouble(currentInput);
             result = Math.pow(currentValue, 2);
             display.setText(String.valueOf(result));
-            currentInput = "";
+            currentInput = String.valueOf(result);
             lastOperation = "";
         }
     }
