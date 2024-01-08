@@ -4,6 +4,10 @@
 # Overview
 The Calculator project is a simple Java Swing-based calculator application. It provides basic arithmetic operations, including addition, subtraction, multiplication, and division, along with additional features such as square root and power of 2.
 ## About the Branching
+
+![image](https://github.com/dragontwiz/pro_lexyan/assets/92438692/b7d4f7aa-5876-4e8f-9954-8a3ce507f22b)
+![image](https://github.com/dragontwiz/pro_lexyan/assets/92438692/529bf26b-b3dd-4c64-b001-46c0fa391d1c)
+
 This branching strategy ensures a structured and controlled development process. It allows for parallel feature development, continuous integration, and quick resolution of critical issues through hotfix branches. The main branch always represents the stable and production-ready codebase, while the develop branch serves as a staging area for ongoing development efforts.
 ### Main Branch:
 
