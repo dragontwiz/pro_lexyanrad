@@ -86,17 +86,17 @@ jobs:
  #       uses: git-secrets/scan@master
 
 
- Secrets-Management:
-   runs-on: ubuntu-latest
-   needs: Linter
-   steps:
-     - name: Install Secrets Management Tool
-       run: |
-         # Install and configure a secrets management tool
+ # Secrets-Management:
+ #   runs-on: ubuntu-latest
+ #   needs: Linter
+ #   steps:
+ #     - name: Install Secrets Management Tool
+ #       run: |
+ #         # Install and configure a secrets management tool
 
-     - name: Use Secrets Management Tool
-       run: |
-         # Use the secrets management tool to handle secrets
+ #     - name: Use Secrets Management Tool
+ #       run: |
+ #         # Use the secrets management tool to handle secrets
 
  # IaC-Security:
   #  runs-on: ubuntu-latest
