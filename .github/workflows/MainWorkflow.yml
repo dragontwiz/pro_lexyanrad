@@ -193,13 +193,13 @@ jobs:
 
          - uses: Azure/docker-login@v1
            with:
-              login-server: contoso.azurecr.io
+              login-server: lexyanpro.azurecr.io
               username: ${{ secrets.REGISTRY_USERNAME }}
               password: ${{ secrets.REGISTRY_PASSWORD }}
 
          - run: |
-              docker build . -t contoso.azurecr.io/k8sdemo:${{ github.sha }}
-              docker push contoso.azurecr.io/k8sdemo:${{ github.sha }}
+              docker build . -t lexyanpro.azurecr.io/k8sdemo:${{ github.sha }}
+              docker push lexyanpro.azurecr.io/k8sdemo:${{ github.sha }}
 
          - uses: azure/setup-kubectl@v2.0
 
@@ -209,7 +209,7 @@ jobs:
 
          - uses: Azure/k8s-create-secret@v1.1
            with:
-              container-registry-url: contoso.azurecr.io
+              container-registry-url: lexyanpro.azurecr.io
               container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
               container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
               secret-name: demo-k8s-secret
