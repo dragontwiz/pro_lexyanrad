@@ -78,7 +78,7 @@ This branching strategy ensures a structured and controlled development process.
 - Deploys to Kubernetes using manifests.
 
 ## About the Security
- The security of the project acts on two different occasions. The first one occurs when pushing or merging into the developer or other sub-branches. The second is when pushing or merging from other branches into the main branch. That way, no errors or security vulnerabilities can be pushed or merged into the sub-branches. The second security check is for security vulnerabilities when merging two branches.
+ The security of the project acts on two different occasions. The first one occurs when pushing or merging into the developer or other sub-branches. The second is when pushing or merging from other branches into the main branch. That way (on the first check), no errors or security vulnerabilities can be pushed or merged into the sub-branches. The second security check is for security vulnerabilities when merging two branches.
 
 ## About the Docker deploy
  We build the Docker image which contains the app code and directly upload it to a DockerHub registry which contains all stable versions of the calculator app.
