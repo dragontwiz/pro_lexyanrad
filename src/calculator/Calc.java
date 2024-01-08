@@ -48,7 +48,7 @@ public class Calc extends JFrame {
 
         String[] buttonLabels = {
                 "7", "8", "9", "/", "C",
-                "4", "5", "6", "*", "",
+                "4", "5", "6", "*", "√",
                 "1", "2", "3", "-", "",
                 "0", ".", "=", "+", ""
         };
@@ -76,6 +76,8 @@ public class Calc extends JFrame {
                 clearCalculator();
             } else if (buttonText.equals("←")) {
                 handleBackspace();
+            } else if (buttonText.equals("√")) {
+                handleSquareRoot();
             } else {
                 handleInput(buttonText);
             }
@@ -90,6 +92,8 @@ public class Calc extends JFrame {
                 performOperation();
                 lastOperation = input;
                 currentInput = "";
+            } else if (input.equals("√")) {
+                handleSquareRoot();
             }
         }
 
@@ -138,6 +142,20 @@ public class Calc extends JFrame {
             lastOperation = "";
             display.setText("");
         }
+
+    private void handleSquareRoot() {
+        if (!currentInput.isEmpty()) {
+            double currentValue = Double.parseDouble(currentInput);
+            if (currentValue >= 0) {
+                result = Math.sqrt(currentValue);
+                display.setText(String.valueOf(result));
+                currentInput = "";
+                lastOperation = "";
+            } else {
+                display.setText("Error");
+            }
+        }
+    }
 
         public static void main(String[] args) {
             SwingUtilities.invokeLater(() -> {
