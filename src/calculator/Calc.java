@@ -48,7 +48,7 @@ public class Calc extends JFrame {
 
         String[] buttonLabels = {
                 "7", "8", "9", "/", "C",
-                "4", "5", "6", "*", "",
+                "4", "5", "6", "*", "x^2",
                 "1", "2", "3", "-", "",
                 "0", ".", "=", "+", ""
         };
@@ -76,6 +76,8 @@ public class Calc extends JFrame {
                 clearCalculator();
             } else if (buttonText.equals("←")) {
                 handleBackspace();
+            } else if (buttonText.equals("x^2")) {
+                handlePowerOf2();
             } else {
                 handleInput(buttonText);
             }
@@ -83,15 +85,17 @@ public class Calc extends JFrame {
     }
 
         public void handleInput(String input) {
-            if (input.matches("[0-9.]")) {
-                currentInput += input;
-                display.setText(currentInput);
-            } else if (input.matches("[+\\-*/]")) {
-                performOperation();
-                lastOperation = input;
-                currentInput = "";
-            }
+        if (input.matches("[0-9.]")) {
+            currentInput += input;
+            display.setText(currentInput);
+        } else if (input.matches("[+\\-*/]")) {
+            performOperation();
+            lastOperation = input;
+            currentInput = "";
+        } else if (input.equals("x^2")) {
+            handlePowerOf2();
         }
+    }
 
         public void performOperation() {
             if (!currentInput.isEmpty()) {
@@ -138,6 +142,16 @@ public class Calc extends JFrame {
             lastOperation = "";
             display.setText("");
         }
+
+	private void handlePowerOf2() {
+        if (!currentInput.isEmpty()) {
+            double currentValue = Double.parseDouble(currentInput);
+            result = Math.pow(currentValue, 2);
+            display.setText(String.valueOf(result));
+            currentInput = "";
+            lastOperation = "";
+            }
+    	}
 
         public static void main(String[] args) {
             SwingUtilities.invokeLater(() -> {
