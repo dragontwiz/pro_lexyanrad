@@ -1,18 +1,18 @@
-package tests;
+package unitTests;
 
-import calculator.Calc;
+import calculator.Calculator;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UnitTest {
+public class UnitTests {
 
-    private Calc calculator;
+    private Calculator calculator;
 
     @Before
     public void setUp() {
-        calculator = new Calc();
+        calculator = new Calculator();
     }
 
     @Test
@@ -58,6 +58,41 @@ public class UnitTest {
         calculator.handleInput("0");
         calculator.performOperation();
         assertEquals("Error", calculator.display.getText());
+    }
+
+    @Test
+    public void testSquareRoot() {
+        calculator.handleInput("9");
+        calculator.handleSquareRoot();
+        assertEquals("3.0", calculator.display.getText());
+    }
+
+    @Test
+    public void testSquareRootOfNegativeNumber() {
+        calculator.handleInput("-4");
+        calculator.handleSquareRoot();
+        assertEquals("Error", calculator.display.getText());
+    }
+
+    @Test
+    public void testPowerOf2() {
+        calculator.handleInput("4");
+        calculator.handlePowerOf2();
+        assertEquals("16.0", calculator.display.getText());
+    }
+
+    @Test
+    public void testPowerOf2WithZero() {
+        calculator.handleInput("0");
+        calculator.handlePowerOf2();
+        assertEquals("0.0", calculator.display.getText());
+    }
+
+    @Test
+    public void testPowerOf2WithNegativeNumber() {
+        calculator.handleInput("-3");
+        calculator.handlePowerOf2();
+        assertEquals("9.0", calculator.display.getText());
     }
 
     @Test
