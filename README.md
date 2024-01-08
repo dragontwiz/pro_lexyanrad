@@ -30,17 +30,17 @@ This branching strategy ensures a structured and controlled development process.
 - Merge Destination: Main/Develop branch.
 
 ## Branching Strategy Workflow
-# Feature Development:
+### Feature Development:
 
 - Developers create feature branches from the develop branch to work on new features.
 - Feature branches are merged back into the develop branch upon completion.
-# Code Review:
+### Code Review:
 
 - Before merging into the develop branch, feature branches undergo code review to maintain code quality.
-# Release Preparation:
+### Release Preparation:
 
 - When a set of features is ready for release, the develop branch is merged into the main branch.
-# Hotfixing:
+### Hotfixing:
 
 - If critical issues are identified in the main branch, hotfix branches are created.
 - Hotfix branches are merged into both the main and develop branches.
